@@ -6,6 +6,7 @@
 package main
 
 import (
+    "google.golang.org/appengine"
     "fmt"
     "log"
     "net/http"
@@ -17,7 +18,8 @@ func main() {
 
     http.HandleFunc("/_ah/health", healthCheckHandler)
     log.Print("Listening on port 8080")
-    log.Fatal(http.ListenAndServe(":8080", nil))
+    http.ListenAndServe(":8080", nil)
+    appengine.Main()
 }
 
 func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
