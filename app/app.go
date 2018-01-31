@@ -14,7 +14,7 @@ import (
 
 func main() {
     fs := http.FileServer(http.Dir("static"))
-    http.Handle("/index.html", fs)
+    http.Handle("/", fs)
 
     http.HandleFunc("/_ah/health", healthCheckHandler)
     log.Print("Listening on port 8080")
